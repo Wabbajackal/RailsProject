@@ -1,6 +1,6 @@
 class Hunter < ApplicationRecord
   has_many :specialties, dependent: :destroy
-  has_many :species, through: :specialties
+  has_many :specie, through: :specialties
 
   validates :name, :description, :cost, presence: true, allow_blank: false
   validates :cost, numericality: true

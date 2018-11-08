@@ -8,6 +8,9 @@
 Specialty.destroy_all
 Hunter.destroy_all
 Specie.destroy_all
+
+# AdminUser.create!(email: 'thicksonsean@gmail.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
 Specie.create(name: 'Human', specie_type: 'Humanoid')
 Specie.create(name: 'Human(Mutate)', specie_type: 'Humanoid')
 Specie.create(name: 'Human(Mutant)', specie_type: 'Humanoid')
@@ -62,4 +65,9 @@ Hunter.create(name: 'Deadpool', description: 'Marvel', cost: '79.99')
 Hunter.create(name: 'Cable', description: 'Marvel', cost: '79.99')
 Hunter.create(name: 'Bullseye', description: 'Marvel', cost: '79.99')
 Hunter.create(name: "Bu'soor", description: 'Predator', cost: '79.99')
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Hunter.all.each do |person|
+  Specie.all.each do |type|
+    Specialty.create(hunter: person, specie: type, modifier: '1')
+  end
+end
