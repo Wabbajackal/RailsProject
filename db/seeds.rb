@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Specialty.destroy_all
+Hunter.destroy_all
+Specie.destroy_all
+specie = Specie.create(name: 'Human', type: 'Humanoid')

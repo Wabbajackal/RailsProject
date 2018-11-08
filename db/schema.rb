@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_143912) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "location_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_143912) do
 
   create_table "species", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "specie_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_143912) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "vehicle_type"
     t.decimal "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
