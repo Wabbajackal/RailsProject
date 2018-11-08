@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule: one
+  hunter_cost: 9.99
+  vehicle_cost: 9.99
+  tax: 9.99
+  total_cost: 9.99
+
+two:
+  schedule: two
+  hunter_cost: 9.99
+  vehicle_cost: 9.99
+  tax: 9.99
+  total_cost: 9.99

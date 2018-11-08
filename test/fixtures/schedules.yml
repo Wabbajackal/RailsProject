@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hunter: one
+  vehicle: one
+  target: one
+  location: one
+  total_cost: 9.99
+  start_date: 2018-11-08
+  end_date: 2018-11-08
+
+two:
+  hunter: two
+  vehicle: two
+  target: two
+  location: two
+  total_cost: 9.99
+  start_date: 2018-11-08
+  end_date: 2018-11-08

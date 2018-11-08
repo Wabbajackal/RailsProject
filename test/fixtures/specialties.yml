@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hunter: one
+  specie: one
+  modifier: 9.99
+
+two:
+  hunter: two
+  specie: two
+  modifier: 9.99
