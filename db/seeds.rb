@@ -7,5 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Specialty.destroy_all
 Hunter.destroy_all
-Specie.destroy_all
-specie = Specie.create(name: 'Human', type: 'Humanoid')
+# Specie.destroy_all
+specie = Specie.create(name: 'Human', specie_type: 'Humanoid')
+specie.Hunter.create(name: 'Dean Winchester', description: 'So very angry', cost: 59.99)

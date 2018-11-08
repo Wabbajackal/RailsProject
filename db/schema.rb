@@ -25,12 +25,10 @@ ActiveRecord::Schema.define(version: 2018_11_08_143912) do
 
   create_table "hunters", force: :cascade do |t|
     t.string "name"
-    t.integer "specie_id"
     t.text "description"
     t.decimal "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["specie_id"], name: "index_hunters_on_specie_id"
   end
 
   create_table "locations", force: :cascade do |t|
