@@ -62,3 +62,4 @@ Hunter.create(name: 'Deadpool', description: 'Marvel', cost: '79.99')
 Hunter.create(name: 'Cable', description: 'Marvel', cost: '79.99')
 Hunter.create(name: 'Bullseye', description: 'Marvel', cost: '79.99')
 Hunter.create(name: "Bu'soor", description: 'Predator', cost: '79.99')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
