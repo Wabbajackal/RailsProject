@@ -6,6 +6,14 @@
     <%= @target.specie.name %>
   <% end %>
 </h2>
+
+<% if @target.image.present? %>
+  <%= image_tag(@target.image.url, :alt => @target.name, :width => 200) %>
+<% elsif @target.specie.image.present? %>
+  <%= image_tag(@target.specie.image.url, :alt => @target.specie.name, :width => 200) %>
+<% end %>
+
+<h5>Description</h5>
 <p><%= @target.description %></p>
 
 <small><%= link_to 'Back', '/targets' %></small>

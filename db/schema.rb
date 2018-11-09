@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_11_09_174508) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["specie_id"], name: "index_targets_on_specie_id"
   end
 
