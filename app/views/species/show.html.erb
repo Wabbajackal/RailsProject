@@ -1,5 +1,9 @@
 <h1>Specie</h1>
 <h2><%= @specie.name %></h2>
+<% if @specie.image.present? %>
+  <%= image_tag(@specie.image.url, :alt => @specie.name, :width => 200) %>
+<% end %>
+<h5>Type</h5>
 <p><%= @specie.specie_type %></p>
 
 <small><%= link_to 'Back', '/species' %></small>
