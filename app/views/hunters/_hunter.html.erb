@@ -1,0 +1,8 @@
+<h2><%= @hunter.name %></h2>
+<% if @hunter.image.present? %>
+  <%= image_tag(@hunter.image.url, :alt => @hunter.name, :width => 300) %>
+<% end %>
+<h5>Cost</h5>
+<p>$<%= @hunter.cost %> per week</p>
+<h5>Description</h5>
+<p><%= @hunter.description %></p>
