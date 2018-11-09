@@ -4,5 +4,6 @@ class HuntersController < ApplicationController
   end
 
   def show
+    @hunter = Hunter.find(params[:id])
   end
 end

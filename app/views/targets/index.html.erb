@@ -1,0 +1,14 @@
+<h1>Target</h1>
+<ul>
+  <% @targets.each do |target|%>
+    <li>
+      <% if target.name.length > 0 %>
+        <%= link_to target.name, target %>
+      <% else %>
+        <%= link_to target.specie.name, target %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+

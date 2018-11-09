@@ -1,2 +1,7 @@
-<h1>Species#index</h1>
-<p>Find me in app/views/species/index.html.erb</p>
+<h1>Species</h1>
+<ul>
+  <% @species.each do |specie|%>
+    <li><%= link_to specie.name, specie %></li>
+  <% end %>
+</ul>
+

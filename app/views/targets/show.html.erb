@@ -1,0 +1,9 @@
+<h1>Target</h1>
+<h2>
+  <% if @target.name.length > 0 %>
+    <%= @target.name %>
+  <% else %>
+    <%= @target.specie.name %>
+  <% end %>
+</h2>
+<p><%= @target.description %></p>
