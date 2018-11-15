@@ -1,6 +1,6 @@
 class TargetsController < ApplicationController
   def index
-    @targets = Target.all
+    @targets = Target.all.page(params[:page]).per(12)
   end
 
   def show
