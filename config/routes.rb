@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :hunters, only: [:index, :show]
   resources :species, only: [:index, :show]
   resources :targets, only: [:index, :show]
-  get 'about', to: 'pages#about', as: 'about'
-  get 'contact', to: 'pages#contact', as: 'contact'
+
+  get ':permalink', to: 'pages#permalink'
+
   root to: 'targets#index'
 
 end
