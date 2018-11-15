@@ -9,9 +9,9 @@
       <div class="col-4">
         <div class="card mb-3 bg-primary">
           <% if target.name.length != 0 %>
-            <h3 class="card-header"><%= link_to target.name, target %></h3>
+            <h5 class="card-header"><%= link_to target.name, target %></h5>
           <% else %>
-          <h3 class="card-header"><%= link_to 'Generic ' + target.specie.name, target %></h3>
+            <h5 class="card-header"><%= link_to 'Generic ' + target.specie.name, target %></h5>
           <% end %>
           <div class="card-body">
             <h6 class="card-subtitle text-muted"><%= link_to target.specie.name, target.specie %></h6>

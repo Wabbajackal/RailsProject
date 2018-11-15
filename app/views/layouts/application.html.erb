@@ -25,7 +25,7 @@
           </li>
           <% Page.all.each do |page| %>
             <li class="nav-item">
-              <a class="nav-link" href="<%= page.permalink %>"><%= page.title %></a>
+              <a class="nav-link" href="/<%= page.permalink %>"><%= page.title %></a>
             </li>
           <%end %>
         </ul>

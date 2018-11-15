@@ -7,7 +7,7 @@
     <% @hunters.each do |hunter|%>
       <div class="col-4">
         <div class="card mb-3 bg-primary">
-          <h3 class="card-header"><%= link_to hunter.name, hunter %></h3>
+          <h5 class="card-header"><%= link_to hunter.name, hunter %></h5>
           <div class="card-body">
             <h6 class="card-subtitle text-muted">$<%= hunter.cost%> CAN</h6>
           </div>
