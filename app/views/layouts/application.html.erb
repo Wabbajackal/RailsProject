@@ -37,39 +37,43 @@
     </nav>
   </header>
   <body>
-    <div class="card text-white bg-primary mb-3 float-right" style="max-width: 20rem;">
-      <div class="card-header"><h5>Cart</h5></div>
-      <div class="card-body border-top">
-      <% unless @cart_target.nil? %>
-        <h5 class="card-title">Target</h5>
-        <% if @cart_target.name.length > 0 %>
-          <p class="card-title"><%= @cart_target.name %></p>
+    <% if request.original_url != 'http://localhost:3000/schedules/create_order' %>
+      <div class="card text-white bg-primary mb-3 float-right col-2" style="max-width: 20rem;">
+        <div class="card-header"><h5>Cart</h5></div>
+        <div class="card-body border-top">
+        <% unless @cart_target.nil? %>
+          <h5 class="card-title">Target</h5>
+          <% if @cart_target.name.length > 0 %>
+            <p class="card-title"><%= @cart_target.name %></p>
+          <% else %>
+            <div class="row">
+              <div class="col-8">
+                <p class="card-title"><%= @cart_target.specie.name %></p>
+              </div>
+              <div class="col-4">
+                <input id="quantity"class="form-control" type="number" min="1" value="<%= session[:quantity].to_i%>" >
+              </div>
+            </div>
+          <% end %>
         <% else %>
-
-          <div class="row">
-            <div class="col-8">
-              <p class="card-title"><%= @cart_target.specie.name %></p>
-            </div>
-            <div class="col-4">
-              <input id="quantity"class="form-control" type="number" min="1" value="<%= session[:quantity].to_i%>" >
-            </div>
-          </div>
+          <p class="card-title">No Target Selected</p>
         <% end %>
-      <% else %>
-        <p class="card-title">No Target Selected</p>
-      <% end %>
+        </div>
+        <div class="card-body border-top border-bottom">
+        <% unless @cart_hunter.nil? %>
+          <h5 class="card-title">Hunter</h5>
+          <p class="card-title"><%= @cart_hunter.name %></p>
+        <% else %>
+          <p class="card-title">No Hunter Selected</p>
+        <% end %>
+        </div>
+        <%= form_tag("/schedules/create_order", method: "post", class: 'form-inline form-group mt-4') do %>
+          <%# <label class="form-label">Category</label> %>
+          <%= submit_tag("Checkout", class: "btn btn-primary col align-self-center") %>
+        <% end %>
       </div>
-      <div class="card-body border-top">
-      <% unless @cart_hunter.nil? %>
-        <h5 class="card-title">Hunter</h5>
-        <p class="card-title"><%= @cart_hunter.name %></p>
-      <% else %>
-        <p class="card-title">No Hunter Selected</p>
       <% end %>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    <%= yield %>
+      <%= yield %>
   </body>
 </html>
 
