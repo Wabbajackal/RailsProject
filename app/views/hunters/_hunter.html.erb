@@ -1,8 +1,27 @@
-<h2><%= @hunter.name %></h2>
-<% if @hunter.image.present? %>
-  <%= image_tag(@hunter.image.url, :alt => @hunter.name, :width => 300) %>
-<% end %>
-<h5>Cost</h5>
-<p>$<%= @hunter.cost %> per week</p>
-<h5>Description</h5>
-<p><%= @hunter.description %></p>
+<div class = "container">
+  <div class="row">
+    <div class="card mb-3 bg-primary col">
+        <h5 class="card-header text-white"><%=@hunter.name%></h5>
+      <div class="card-body">
+        <h6 class="card-subtitle text-muted">$<%=@hunter.cost%> per week</h6>
+      </div>
+      <% if @hunter.image.present? %>
+        <%= image_tag(@hunter.image.url, :alt => @hunter.name, :height => 500) %>
+      <% end %>
+      <h3 class="text-center"><%= link_to 'Add to Cart', add_to_cart_hunter_path(@hunter), method: :post %></h3>
+      <div class="card-footer text-muted">
+        Last Updated: <%= @hunter.updated_at %>
+      </div>
+    </div>
+  <div class="card mb-3 bg-primary col">
+    <div class="card-body text-white">
+      <p class="card-text"><%= @hunter.description %></p>
+    </div>
+  </div>
+
+
+  </div>
+
+
+</div>
+

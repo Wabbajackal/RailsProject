@@ -17,6 +17,7 @@
           <div class="card-body text-white">
             <p class="card-text"><%= @target.description %></p>
           </div>
+          <h3 class="text-center"><%= link_to 'Add to Cart', add_to_cart_target_path(@target), method: :post %></h3>
           <div class="card-footer text-muted">
             Last Updated: <%= @target.updated_at %>
           </div>

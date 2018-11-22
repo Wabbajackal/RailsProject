@@ -6,4 +6,19 @@ class HuntersController < ApplicationController
   def show
     @hunter = Hunter.find(params[:id])
   end
+
+  def add_to_cart
+    session[:hunter] = params[:id]
+
+    if session[:target].nil?
+      redirect_to '/targets'
+    else
+      redirect_to '/species'
+    end
+  end
+
+  def clear_cart
+    session[:hunter] = []
+    redirect_to '/targets'
+  end
 end
