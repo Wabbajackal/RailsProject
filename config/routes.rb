@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'targets/show'
   get 'targets/index'
+  post 'targets/index'
   get 'species/index'
   get 'species/show'
   get 'hunters/index'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   end
   resources :targets, only: [:index, :show] do
     member do
-      post :add_to_cart
+      post :add_to_cart, :get_category
     end
   end
 

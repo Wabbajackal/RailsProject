@@ -3,12 +3,16 @@ class TargetsController < ApplicationController
   # before_action :load_cart
 
   def index
-    @targets = Target.all.page(params[:page]).per(12)
+    if params[:target_type].nil? || params[:target_type] == 'All'
+      @targets = Target.all.page(params[:page]).per(12)
+    else
+      @targets = Target.joins(:specie).where(species: {specie_type: params[:target_type]}).page(params[:page]).per(12)
+    end
     # @cart_target = Target.find(session[:target])
   end
 
   def show
-    @target = Target.find(params[:id])
+      @target = Target.find(params[:id])
     # @cart_target = Target.find(session[:target])
   end
 
@@ -33,5 +37,9 @@ class TargetsController < ApplicationController
   def update_quantity
     session[:quantity] = params[:quantity]
     # session[:quantity] = ActiveSupport::JSON.decode(CGI.unescapeHTML(params[:quantity]))
+  end
+
+  def get_category
+    # redirect_to '/species'
   end
 end

@@ -2,8 +2,18 @@
 <h1>Targets</h1>
 <div class="container pagination justify-content-center" >
       <%= paginate @targets %>
-    </div>
+</div>
+
 <div class = "container">
+  <div class="row">
+    <div class='col-4'>
+      <%= form_tag("/targets/index", method: "post", class: 'form-inline') do %>
+        <%# <label class="form-label">Category</label> %>
+        <%= select_tag "target_type", options_for_select([ "All", "Alien", "Humanoid", "Monster" ], "All",), {:class => 'form-control'} %>
+        <%= submit_tag("Go", class: "btn btn-primary") %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <% @targets.each do |target|%>
       <div class="col-4">
@@ -38,9 +48,5 @@
     </div>
   </div>
 </div>
-
-<%= debug session[:target] %>
-<%= debug session[:hunter] %>
-<%= debug session[:quantity] %>
 
 
