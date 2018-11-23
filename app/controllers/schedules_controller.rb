@@ -8,21 +8,24 @@ class SchedulesController < ApplicationController
   def confirm
     unless params[:start_date].nil?
       session[:location] = params[:cart_location]
+      session[:quantity] = params[:target]['quantity']
       session[:province] = params[:cart_province]
       session[:start] = "#{params[:start_date]['year']}-#{params[:start_date]['month']}-#{params[:start_date]['day']}"
-      session[:end] = "#{params[:end_date]['year']}-#{params[:end_date]['month']}-#{params[:end_date]['day']}"  end
+      session[:end] = "#{params[:end_date]['year']}-#{params[:end_date]['month']}-#{params[:end_date]['day']}"
+    end
       s = Date.parse(session[:start])
       e = Date.parse(session[:end])
       # @weeks = Date.parse(e).step(s, 7).count
       # # @weeks = s - e
       @province = Province.find(session[:province])
       @weeks = ((s..e).count - 1) / 7
-      @cost = @cart_hunter.cost * @weeks
+      @cost = (@cart_hunter.cost * @weeks) + (20 * session[:quantity].to_i)
       taxes = @cost.to_f * (@province.tax.to_f / 100)
       @taxes = taxes.round(2)
       @total = @cost + @taxes
       session[:total_cost] = @total
-    end
+
+  end
   def checkout
     Schedule.create(
       hunter: Hunter.find(session[:hunter]),

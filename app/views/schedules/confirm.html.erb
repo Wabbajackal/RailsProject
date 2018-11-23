@@ -42,7 +42,8 @@
         <p class="card-text">Province: <%= @province.name %></p>
         <p class="card-text">Start Date: <%= session[:start] %></p>
         <p class="card-text">End Date: <%= session[:end] %></p>
-        <p class="card-text">Cost Per Week (<%= @weeks %> weeks): $<%= @cart_hunter.cost %></p>
+        <p class="card-text">Cost Per Week (<%= pluralize(@weeks, 'week')%>): $<%= @cart_hunter.cost %></p>
+        <p class="card-text">Cost Per Target (<%= pluralize(session[:quantity], 'target')%>): $20.00</p>
         <p class="card-text">Subtotal: $<%= @cost %></p>
         <p class="card-text">Taxes (<%= @province.tax %>%): $<%= @taxes %></p>
         <p class="card-text">Grand Total: $<%= @total %></p>

@@ -37,7 +37,7 @@
     </nav>
   </header>
   <body>
-    <% if request.original_url != 'http://localhost:3000/schedules/create_order' %>
+    <% if request.original_url != 'http://localhost:3000/schedules/create_order' && request.original_url != 'http://localhost:3000/schedules/confirm'%>
       <div class="card text-white bg-primary mb-3 float-right col-2" style="max-width: 20rem;">
         <div class="card-header"><h5>Cart</h5></div>
         <div class="card-body border-top">
@@ -70,7 +70,7 @@
           <p class="card-title">No Hunter Selected</p>
         <% end %>
         </div>
-        <% unless  @cart_target.nil? && @cart_hunter.nil?%>
+        <% unless  @cart_target.nil? || @cart_hunter.nil?%>
           <%= form_tag("/schedules/create_order", method: "post", class: 'form-inline form-group mt-4') do %>
             <%# <label class="form-label">Category</label> %>
             <%= submit_tag("To Checkout", class: "btn btn-primary col align-self-center") %>

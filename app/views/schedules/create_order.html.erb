@@ -41,6 +41,8 @@
           <label class="form-label">Location of Target</label>
           <% location_array = Location.all.map { |loc| [loc.name, loc.id] } %>
           <%= select_tag "cart_location", options_for_select(location_array), {:class => 'form-control'} %>
+          <label class="form-label">Quantity of Targets</label>
+          <%= number_field(:target, :quantity, in: 1..50, step: 1, value: 1, :class => 'form-control') %>
           <label class="form-label">Province of Residence</label>
           <% province_array = Province.all.map { |prov| [prov.name, prov.id] } %>
           <%= select_tag "cart_province", options_for_select(province_array), {:class => 'form-control'} %>
