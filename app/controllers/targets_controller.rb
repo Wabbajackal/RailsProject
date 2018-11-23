@@ -25,7 +25,7 @@ class TargetsController < ApplicationController
     if session[:hunter].nil?
       redirect_to '/hunters'
     else
-      redirect_to '/species'
+      redirect_to '/targets'
     end
   end
 

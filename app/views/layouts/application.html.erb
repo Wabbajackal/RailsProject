@@ -50,10 +50,10 @@
               <div class="col-8">
                 <p class="card-title"><%= @cart_target.specie.name %></p>
               </div>
-              <div class="col-4">
-                <input id="quantity"class="form-control" type="number" min="1" value="<%= session[:quantity].to_i%>" >
-              </div>
             </div>
+          <% end %>
+          <%= form_tag("schedules/remove_target", method: "post", class: 'form-inline form-group mt-4') do %>
+              <%= submit_tag("Remove", class: "btn btn-danger col align-self-center") %>
           <% end %>
         <% else %>
           <p class="card-title">No Target Selected</p>
@@ -63,13 +63,18 @@
         <% unless @cart_hunter.nil? %>
           <h5 class="card-title">Hunter</h5>
           <p class="card-title"><%= @cart_hunter.name %></p>
+          <%= form_tag("schedules/remove_hunter", method: "post", class: 'form-inline form-group mt-4') do %>
+              <%= submit_tag("Remove", class: "btn btn-danger col align-self-center") %>
+          <% end %>
         <% else %>
           <p class="card-title">No Hunter Selected</p>
         <% end %>
         </div>
-        <%= form_tag("/schedules/create_order", method: "post", class: 'form-inline form-group mt-4') do %>
-          <%# <label class="form-label">Category</label> %>
-          <%= submit_tag("Checkout", class: "btn btn-primary col align-self-center") %>
+        <% unless  @cart_target.nil? && @cart_hunter.nil?%>
+          <%= form_tag("/schedules/create_order", method: "post", class: 'form-inline form-group mt-4') do %>
+            <%# <label class="form-label">Category</label> %>
+            <%= submit_tag("To Checkout", class: "btn btn-primary col align-self-center") %>
+          <% end %>
         <% end %>
       </div>
       <% end %>
@@ -77,7 +82,7 @@
   </body>
 </html>
 
-<script>
+<%# <script>
   $( "#quantity" ).change(function() {
       $.ajax({
         type: 'post',
@@ -87,4 +92,4 @@
       });
       // alert ($("#quantity").val())
   });
-</script>
+</script> %>

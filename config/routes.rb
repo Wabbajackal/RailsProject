@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get 'hunters/show'
   get 'schedules/create_order'
   post 'schedules/create_order'
+  get 'schedules/confirm'
+  post 'schedules/confirm'
+  post 'schedules/checkout'
+  get 'schedules/order_message'
+  post 'schedules/remove_target'
+  post 'schedules/remove_hunter'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

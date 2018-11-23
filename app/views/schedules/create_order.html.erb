@@ -1,6 +1,6 @@
 
 <div class="container mt-3">
-  <div class="row">
+<div class="row">
     <div class="card mb-3 bg-primary col-6">
       <% if @cart_target.name.length != 0 %>
         <h5 class="card-header text-white"><%=@cart_target.name%></h5>
@@ -13,11 +13,11 @@
       <% if @cart_target.image.present? %>
         <%= image_tag(@cart_target.image.url, :alt => @cart_target.name, :height => 300) %>
       <% elsif @cart_target.specie.image.present? %>
-        <%= image_tag(@cart_target.specie.image.url, :alt => cart_target.specie.name, :height => 300) %>
+        <%= image_tag(@cart_target.specie.image.url, :alt => @cart_target.specie.name, :height => 300) %>
       <% end %>
-      <div class="card-footer text-muted">
-        Last Updated: <%= @cart_target.updated_at %>
-      </div>
+      <%= form_tag("remove_target", method: "post", class: 'form-inline form-group mt-4') do %>
+              <%= submit_tag("Remove", class: "btn btn-danger col align-self-center") %>
+      <% end %>
     </div>
     <div class="card mb-3 bg-primary col-6">
         <h5 class="card-header text-white"><%=@cart_hunter.name%></h5>
@@ -27,17 +27,37 @@
       <% if @cart_hunter.image.present? %>
         <%= image_tag(@cart_hunter.image.url, :alt => @cart_hunter.name, :height => 300) %>
       <% end %>
-      <div class="card-footer text-muted">
-        Last Updated: <%= @cart_hunter.updated_at %>
-      </div>
+      <%= form_tag("remove_hunter", method: "post", class: 'form-inline form-group mt-4') do %>
+              <%= submit_tag("Remove", class: "btn btn-danger col align-self-center") %>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="card text-white bg-primary mb-3 col-12 align-self-center">
-      <div class="card-header">Total</div>
-      <div class="card-body">
-        <h4 class="card-title">Primary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h4 class="card-title">Order Information</h4>
+        <div class="card-body">
+        <%= form_tag("confirm", method: "post") do %>
+        <div class="form-group">
+          <label class="form-label">Location of Target</label>
+          <% location_array = Location.all.map { |loc| [loc.name, loc.id] } %>
+          <%= select_tag "cart_location", options_for_select(location_array), {:class => 'form-control'} %>
+          <label class="form-label">Province of Residence</label>
+          <% province_array = Province.all.map { |prov| [prov.name, prov.id] } %>
+          <%= select_tag "cart_province", options_for_select(province_array), {:class => 'form-control'} %>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Start Date</label>
+          <%= select_date(Date.today, prefix: :start_date) %>
+        </div>
+        <div class="form-group">
+          <label class="form-label">End Date</label>
+          <%= select_date(Date.today + 7, prefix: :end_date) %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag("Go", class: "btn btn-primary") %>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
